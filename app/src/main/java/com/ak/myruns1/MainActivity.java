@@ -88,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (address !=null)  imageView.setImageURI(Uri.fromFile(new File(address)));
-
-
     }
 
     public void onSaveInstanceState(Bundle bundle) {
@@ -113,14 +111,20 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST_CODE) {
-            imageView.setImageURI(null); //Gets cropping screen but doesn't crop!!!
+            imageView.setImageURI(null);
             Crop.of(imgUri, Uri.fromFile(new File(getCacheDir(), "cropped"))).asSquare().start(this);
-
-        }else{
-            imageView.setImageURI(Crop.getOutput(data));
-            address = Uri.fromFile(new File(getCacheDir(), "cropped")).getPath();
         }
 
+        else{
+            if (data != null) {
+                imageView.setImageURI(Crop.getOutput(data));
+                address = Uri.fromFile(new File(getCacheDir(), "cropped")).getPath();
+            }
+            else {
+                imageView.setImageURI(imgUri);
+                address = imgUri.getPath();
+            }
+        }
     }
 
     public void onRadioButtonClicked(View view) {
@@ -135,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //MyRunsDialogFragment?
     public void saveProfile(View view) {
         name = editName.getText().toString();
         email = editEmail.getText().toString();
