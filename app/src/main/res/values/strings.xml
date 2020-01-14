@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Aadhya_Kocha_MyRuns1</string>
+    <string name="change_btn">Change</string>
+    <string name="prof_pic">Profile Photo</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_phone">Phone</string>
+    <string name="tv_gender">Gender</string>
+    <string name="tv_class">Class</string>
+    <string name="tv_major">Major</string>
+    <string name="save_btn">Save</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="save_msg">Saved!</string>
+</resources>
